@@ -5,7 +5,7 @@ Landing page de R1, agencia de diseño y desarrollo web. Todo está en un único
 ## Antes de publicar
 
 1. Al final de `index.html` está el bloque `CONFIG`. Reemplaza estos datos por los reales:
-   - `whatsapp`: número con código de país, sin `+` ni espacios (ej.: `5491155551234`)
+   - `whatsapp`: ya configurado con +54 9 11 3171-5300 (`5491131715300`)
    - `email`: se muestra en la sección de contacto y en el pie de página
    - `calendar`: tu enlace de Calendly, Cal.com o similar
    - `instagram`, `linkedin`, `behance`
