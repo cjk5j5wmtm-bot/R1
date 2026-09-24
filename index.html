@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="R1 — Página web moderna, rápida y adaptable a cualquier dispositivo.">
+  <title>R1 | Inicio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="header" id="header">
+    <nav class="nav container">
+      <a href="#inicio" class="logo">R<span>1</span></a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="navMenu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#inicio" class="nav-link">Inicio</a></li>
+        <li><a href="#servicios" class="nav-link">Servicios</a></li>
+        <li><a href="#nosotros" class="nav-link">Nosotros</a></li>
+        <li><a href="#testimonios" class="nav-link">Testimonios</a></li>
+        <li><a href="#contacto" class="nav-link btn btn-small">Contacto</a></li>
+      </ul>
+
+      <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
+        <span class="icon-sun" aria-hidden="true">☀️</span>
+        <span class="icon-moon" aria-hidden="true">🌙</span>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div class="hero-text">
+          <p class="eyebrow">Bienvenido a R1</p>
+          <h1>Creamos experiencias digitales <span class="gradient-text">que impulsan tu negocio</span></h1>
+          <p class="lead">Diseño moderno, tecnología eficiente y un equipo comprometido con hacer realidad tus ideas en la web.</p>
+          <div class="hero-actions">
+            <a href="#contacto" class="btn">Empezar ahora</a>
+            <a href="#servicios" class="btn btn-outline">Ver servicios</a>
+          </div>
+          <ul class="stats">
+            <li><strong data-count="150">0</strong><span>Proyectos</span></li>
+            <li><strong data-count="98">0</strong><span>% Satisfacción</span></li>
+            <li><strong data-count="10">0</strong><span>Años de experiencia</span></li>
+          </ul>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="blob"></div>
+          <div class="card-float card-1">🚀 Lanzamiento rápido</div>
+          <div class="card-float card-2">📱 100% adaptable</div>
+          <div class="card-float card-3">⚡ Alto rendimiento</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Servicios -->
+    <section class="section" id="servicios">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Lo que hacemos</p>
+          <h2>Nuestros servicios</h2>
+          <p>Soluciones completas para llevar tu presencia digital al siguiente nivel.</p>
+        </div>
+        <div class="cards">
+          <article class="card reveal">
+            <div class="card-icon">🎨</div>
+            <h3>Diseño web</h3>
+            <p>Interfaces atractivas, claras y centradas en la experiencia de tus usuarios.</p>
+          </article>
+          <article class="card reveal">
+            <div class="card-icon">💻</div>
+            <h3>Desarrollo</h3>
+            <p>Sitios y aplicaciones rápidas, seguras y fáciles de mantener.</p>
+          </article>
+          <article class="card reveal">
+            <div class="card-icon">📈</div>
+            <h3>Marketing digital</h3>
+            <p>Estrategias de SEO y redes sociales para que más personas te encuentren.</p>
+          </article>
+          <article class="card reveal">
+            <div class="card-icon">🛒</div>
+            <h3>Tiendas en línea</h3>
+            <p>Vende tus productos 24/7 con una tienda moderna y fácil de administrar.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Nosotros -->
+    <section class="section section-alt" id="nosotros">
+      <div class="container about-grid">
+        <div class="about-visual reveal" aria-hidden="true">
+          <div class="about-box">
+            <span>R1</span>
+          </div>
+        </div>
+        <div class="about-text reveal">
+          <p class="eyebrow">Quiénes somos</p>
+          <h2>Un equipo apasionado por la tecnología</h2>
+          <p>Somos un grupo de diseñadores y desarrolladores que cree que una buena página web puede transformar cualquier proyecto. Trabajamos de cerca contigo en cada etapa, desde la idea hasta el lanzamiento.</p>
+          <ul class="checklist">
+            <li>Atención personalizada</li>
+            <li>Entregas en tiempo y forma</li>
+            <li>Soporte después del lanzamiento</li>
+            <li>Precios transparentes</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section class="section" id="testimonios">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Opiniones</p>
+          <h2>Lo que dicen nuestros clientes</h2>
+        </div>
+        <div class="testimonials reveal">
+          <figure class="testimonial active">
+            <blockquote>“Superaron nuestras expectativas. La nueva web duplicó nuestras consultas en el primer mes.”</blockquote>
+            <figcaption><strong>Cliente A</strong> · Pequeña empresa</figcaption>
+          </figure>
+          <figure class="testimonial">
+            <blockquote>“Proceso claro, comunicación constante y un resultado impecable. Totalmente recomendados.”</blockquote>
+            <figcaption><strong>Cliente B</strong> · Emprendimiento</figcaption>
+          </figure>
+          <figure class="testimonial">
+            <blockquote>“Nuestra tienda en línea ahora es rápida y fácil de usar. Las ventas no paran de crecer.”</blockquote>
+            <figcaption><strong>Cliente C</strong> · Comercio</figcaption>
+          </figure>
+          <div class="dots" role="tablist" aria-label="Seleccionar testimonio"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contacto -->
+    <section class="section section-alt" id="contacto">
+      <div class="container contact-grid">
+        <div class="reveal">
+          <p class="eyebrow">Hablemos</p>
+          <h2>¿Tienes un proyecto en mente?</h2>
+          <p>Escríbenos y te responderemos lo antes posible. ¡La primera consulta es gratis!</p>
+          <ul class="contact-info">
+            <li>📧 contacto@ejemplo.com</li>
+            <li>📞 +00 000 000 000</li>
+            <li>📍 Tu ciudad, Tu país</li>
+          </ul>
+        </div>
+        <form class="contact-form reveal" id="contactForm" novalidate>
+          <div class="field">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+            <small class="error"></small>
+          </div>
+          <div class="field">
+            <label for="email">Correo electrónico</label>
+            <input type="email" id="email" name="email" placeholder="tu@correo.com" required>
+            <small class="error"></small>
+          </div>
+          <div class="field">
+            <label for="mensaje">Mensaje</label>
+            <textarea id="mensaje" name="mensaje" rows="5" placeholder="Cuéntanos sobre tu proyecto" required></textarea>
+            <small class="error"></small>
+          </div>
+          <button type="submit" class="btn btn-block">Enviar mensaje</button>
+          <p class="form-success" id="formSuccess" role="status" hidden>✅ ¡Gracias! Tu mensaje ha sido enviado.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <a href="#inicio" class="logo">R<span>1</span></a>
+      <p>© <span id="year"></span> R1. Todos los derechos reservados.</p>
+      <a href="#inicio" class="back-top">↑ Volver arriba</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
