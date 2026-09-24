@@ -1,33 +1,25 @@
-# R1 — Página web
+# R1 — Landing page
 
-Página web moderna, adaptable y sin dependencias, hecha con HTML, CSS y JavaScript.
+Landing page de R1, agencia de diseño y desarrollo web. Todo está en un único archivo, `index.html`, con el CSS y el JavaScript incluidos. No usa librerías: solo carga las tipografías Space Grotesk e Inter desde Google Fonts.
 
-## Secciones
+## Antes de publicar
 
-- **Inicio**: presentación con llamada a la acción y contadores animados.
-- **Servicios**: tarjetas con los servicios ofrecidos.
-- **Nosotros**: descripción del equipo y ventajas.
-- **Testimonios**: carrusel automático de opiniones.
-- **Contacto**: formulario con validación.
+1. Al final de `index.html` está el bloque `CONFIG`. Reemplaza estos datos por los reales:
+   - `whatsapp`: número con código de país, sin `+` ni espacios (ej.: `5491155551234`)
+   - `email`: se muestra en la sección de contacto y en el pie de página
+   - `calendar`: tu enlace de Calendly, Cal.com o similar
+   - `instagram`, `linkedin`, `behance`
+2. En el `<head>`, cambia `https://www.tudominio.com/` (canonical y `og:url`) por tu dominio real. Si quieres que se vea una imagen al compartir el enlace, agrega `og:image`.
+3. Reemplaza los clientes, proyectos, métricas y testimonios de ejemplo por los reales.
 
-## Características
+## Formulario
 
-- Diseño responsive (móvil, tablet y escritorio) con menú hamburguesa.
-- Modo claro / oscuro (recuerda tu preferencia).
-- Animaciones al hacer scroll (respetan `prefers-reduced-motion`).
-- Sin frameworks ni proceso de compilación.
+El formulario no necesita servidor. Valida los campos y abre WhatsApp con el mensaje ya escrito. Si prefieres recibirlo por email, puedes conectarlo a Formspree o a tu propio backend.
 
-## Cómo verla
+## Verla en tu computadora
 
-Abre `index.html` directamente en el navegador, o levanta un servidor local:
+Abre `index.html` en el navegador, o ejecuta:
 
 ```bash
 python3 -m http.server 8000
-# luego visita http://localhost:8000
 ```
-
-## Personalización
-
-- Textos y secciones: `index.html`
-- Colores y estilos: variables en `:root` dentro de `styles.css`
-- Comportamiento: `script.js` (el formulario todavía no envía datos a ningún servidor; conéctalo a tu backend o a un servicio como Formspree).
