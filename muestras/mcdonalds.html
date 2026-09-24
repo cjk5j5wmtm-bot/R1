@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Concepto McDonald's Argentina — Muestra de diseño por R1</title>
+  <meta name="description" content="Concepto de diseño no oficial creado por R1 como muestra de portfolio. Sin relación con McDonald's ni Arcos Dorados.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23DA291C'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' dominant-baseline='middle' font-family='Arial' font-weight='700' font-size='26' fill='%23FFC72C'%3ER1%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --red: #DA291C;
+      --red-dark: #B31F14;
+      --yellow: #FFC72C;
+      --cream: #FFF8EC;
+      --ink: #1F1A17;
+      --muted: #6A5F57;
+      --line: rgba(31, 26, 23, 0.12);
+      --white: #FFFFFF;
+      --radius: 22px;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+      --display: "Space Grotesk", "Inter", system-ui, sans-serif;
+      --body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      --header-h: 68px;
+      --gutter: 16px;
+    }
+    @media (min-width: 768px) { :root { --gutter: 32px; } }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 48px); }
+    body {
+      font-family: var(--body);
+      background: var(--cream);
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+    button { font: inherit; color: inherit; cursor: pointer; }
+    :focus-visible { outline: 3px solid var(--red); outline-offset: 3px; border-radius: 6px; }
+
+    .container { width: 100%; max-width: 1200px; margin-inline: auto; padding-inline: var(--gutter); }
+
+    h1, h2, h3 { font-family: var(--display); line-height: 1.02; letter-spacing: -0.035em; }
+    h1 { font-size: clamp(2.6rem, 8vw, 5.2rem); }
+    h2 { font-size: clamp(2rem, 5vw, 3.4rem); }
+    h3 { font-size: 1.25rem; letter-spacing: -0.02em; line-height: 1.2; }
+    p { color: var(--muted); }
+
+    .kicker {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 14px;
+    }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      min-height: 50px; padding: 0 24px;
+      border-radius: 999px; border: 2px solid transparent;
+      font-weight: 700; white-space: nowrap;
+      transition: transform 0.25s var(--ease), box-shadow 0.25s, background-color 0.25s;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-yellow { background: var(--yellow); color: var(--ink); }
+    .btn-yellow:hover { box-shadow: 0 10px 24px rgba(255, 199, 44, 0.45); }
+    .btn-red { background: var(--red); color: var(--white); }
+    .btn-red:hover { background: var(--red-dark); box-shadow: 0 10px 24px rgba(218, 41, 28, 0.35); }
+    .btn-outline { border-color: currentColor; }
+    .btn-sm { min-height: 42px; padding: 0 18px; font-size: 0.92rem; }
+
+    /* ---------- Aviso de concepto ---------- */
+    .notice {
+      background: var(--ink);
+      color: #F3EDE4;
+      font-size: 0.82rem;
+      text-align: center;
+      padding: 9px var(--gutter);
+    }
+    .notice a { color: var(--yellow); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+
+    /* ---------- Header ---------- */
+    .header {
+      position: sticky; top: 0; z-index: 50;
+      height: var(--header-h);
+      background: var(--red);
+      color: var(--white);
+      box-shadow: 0 2px 0 rgba(0, 0, 0, 0.06);
+    }
+    .nav { height: 100%; display: flex; align-items: center; gap: 16px; }
+    .brand {
+      margin-right: auto;
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 1.45rem;
+      letter-spacing: -0.03em;
+      display: inline-flex; align-items: center; gap: 10px;
+    }
+    .brand small {
+      font-family: var(--body);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: rgba(255, 255, 255, 0.16);
+      padding: 3px 8px;
+      border-radius: 999px;
+    }
+    .nav-links { display: none; gap: 4px; }
+    .nav-links a { padding: 8px 14px; border-radius: 999px; font-weight: 600; font-size: 0.95rem; transition: background-color 0.2s; }
+    .nav-links a:hover { background: rgba(255, 255, 255, 0.16); }
+    .nav .btn { display: none; }
+    .burger {
+      width: 44px; height: 44px; border-radius: 50%;
+      border: 1.5px solid rgba(255, 255, 255, 0.4); background: transparent; color: var(--white);
+      display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 5px;
+    }
+    .burger span { width: 18px; height: 2px; background: currentColor; border-radius: 2px; transition: transform 0.3s var(--ease), opacity 0.2s; }
+    .burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      position: fixed; left: 0; right: 0; top: var(--header-h); bottom: 0; z-index: 49;
+      background: var(--red); color: var(--white);
+      padding: 24px var(--gutter) 40px;
+      display: flex; flex-direction: column; gap: 24px;
+      opacity: 0; visibility: hidden; transform: translateY(-10px);
+      transition: opacity 0.3s var(--ease), transform 0.3s var(--ease), visibility 0.3s;
+    }
+    .mobile-menu.open { opacity: 1; visibility: visible; transform: none; }
+    .mobile-menu a:not(.btn) {
+      display: block; padding: 16px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      font-family: var(--display); font-size: 1.8rem; font-weight: 700; letter-spacing: -0.03em;
+    }
+    body.menu-open { overflow: hidden; }
+
+    @media (min-width: 1024px) {
+      .nav-links { display: flex; }
+      .nav .btn { display: inline-flex; }
+      .burger, .mobile-menu { display: none; }
+    }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      background: var(--red);
+      color: var(--white);
+      padding: 48px 0 0;
+      overflow: hidden;
+      position: relative;
+    }
+    .hero::after {
+      content: "";
+      position: absolute; left: 0; right: 0; bottom: -1px;
+      height: 60px;
+      background: var(--cream);
+      border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    }
+    .hero-grid { display: grid; gap: 32px; align-items: center; position: relative; z-index: 1; }
+    @media (min-width: 1024px) { .hero-grid > div:first-child { padding-bottom: 96px; } }
+    .hero .kicker { color: var(--yellow); }
+    .hero h1 span { color: var(--yellow); }
+    .hero p { color: rgba(255, 255, 255, 0.88); font-size: clamp(1.05rem, 2vw, 1.2rem); max-width: 40ch; margin: 20px 0 32px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .hero-actions .btn-outline { color: var(--white); }
+    .hero-actions .btn-outline:hover { background: rgba(255, 255, 255, 0.1); }
+    .hero-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
+    .hero-chips li {
+      font-size: 0.85rem; font-weight: 600;
+      padding: 6px 12px; border-radius: 999px;
+      background: rgba(255, 255, 255, 0.14);
+    }
+    .hero-art {
+      position: relative;
+      height: 360px;
+      display: grid; place-items: center;
+      padding-bottom: 60px;
+    }
+    .hero-art .sun {
+      position: absolute;
+      width: 320px; height: 320px;
+      border-radius: 50%;
+      background: var(--yellow);
+      top: 10px;
+    }
+    .hero-art .burger-art { --s: 1.7; position: relative; top: -10px; }
+    .hero-art .fries-art { position: absolute; left: 50%; margin-left: 90px; bottom: 70px; --s: 1.1; }
+    .hero-art .tag {
+      position: absolute; left: 50%; margin-left: -190px; top: 40px;
+      background: var(--white); color: var(--ink);
+      padding: 10px 14px; border-radius: 14px;
+      font-weight: 700; font-size: 0.9rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+      transform: rotate(-6deg);
+    }
+    .hero-art .tag span { display: block; font-size: 0.75rem; font-weight: 500; color: var(--muted); }
+    @media (min-width: 1024px) {
+      .hero { padding-top: 72px; }
+      .hero-grid { grid-template-columns: 1.1fr 1fr; }
+      .hero-art { height: 480px; }
+      .hero-art .sun { width: 420px; height: 420px; }
+      .hero-art .burger-art { --s: 2.2; }
+      .hero-art .fries-art { --s: 1.4; margin-left: 120px; }
+      .hero-art .tag { margin-left: -250px; top: 60px; }
+    }
+    @media (max-width: 420px) {
+      .hero-art .tag { margin-left: -160px; }
+      .hero-art .fries-art { margin-left: 70px; }
+    }
+
+    /* ---------- Ilustraciones de comida (solo CSS) ---------- */
+    .burger-art {
+      --s: 1;
+      width: calc(120px * var(--s));
+      display: flex; flex-direction: column; align-items: center;
+      filter: drop-shadow(0 calc(10px * var(--s)) calc(14px * var(--s)) rgba(0, 0, 0, 0.18));
+    }
+    .burger-art > i { display: block; width: 100%; }
+    .b-top {
+      height: calc(44px * var(--s));
+      background: radial-gradient(circle at 30% 35%, #F7C77A 0 8%, transparent 9%) , linear-gradient(#E9A23B, #C97B22);
+      border-radius: 50% 50% 12% 12% / 90% 90% 12% 12%;
+      position: relative;
+    }
+    .b-top::after {
+      content: "";
+      position: absolute; inset: 20% 18% 45%;
+      background-image: radial-gradient(ellipse, #FFF4DA 45%, transparent 50%);
+      background-size: calc(12px * var(--s)) calc(7px * var(--s));
+      opacity: 0.9;
+    }
+    .b-lettuce {
+      height: calc(9px * var(--s));
+      width: 108% !important;
+      background: radial-gradient(circle at 10px 0, transparent 5px, #6CBF3C 6px) 0 0 / 14px 100%;
+      background-color: #6CBF3C;
+      border-radius: 40%;
+      margin-top: calc(-2px * var(--s));
+    }
+    .b-cheese {
+      height: calc(7px * var(--s));
+      width: 104% !important;
+      background: #FFC72C;
+      clip-path: polygon(0 0, 100% 0, 100% 40%, 82% 40%, 76% 100%, 70% 40%, 30% 40%, 22% 100%, 16% 40%, 0 40%);
+      margin-bottom: calc(-2px * var(--s));
+      position: relative; z-index: 1;
+    }
+    .b-patty {
+      height: calc(15px * var(--s));
+      background: linear-gradient(#6B3A1E, #4A2512);
+      border-radius: calc(8px * var(--s));
+    }
+    .b-sauce { height: calc(4px * var(--s)); width: 94% !important; background: #F2A65A; border-radius: 4px; }
+    .b-mid { height: calc(12px * var(--s)); background: linear-gradient(#E7A548, #C98530); border-radius: 4px; width: 96% !important; }
+    .b-tomato { height: calc(6px * var(--s)); width: 98% !important; background: #E0442E; border-radius: 6px; }
+    .b-chicken { height: calc(18px * var(--s)); background: linear-gradient(#E8B25C, #C4872E); border-radius: calc(10px * var(--s)); }
+    .b-bottom {
+      height: calc(18px * var(--s));
+      background: linear-gradient(#E3A04A, #C27A26);
+      border-radius: 10% 10% 40% 40% / 20% 20% 60% 60%;
+    }
+
+    .fries-art {
+      --s: 1;
+      position: relative;
+      width: calc(70px * var(--s));
+      height: calc(96px * var(--s));
+      filter: drop-shadow(0 calc(8px * var(--s)) calc(12px * var(--s)) rgba(0, 0, 0, 0.18));
+    }
+    .fries-art::before {
+      content: "";
+      position: absolute; left: 12%; right: 12%; top: 0; height: 55%;
+      background:
+        linear-gradient(90deg, transparent 0 6%, #FFD76A 6% 18%, transparent 18% 24%, #F7C84D 24% 36%, transparent 36% 42%, #FFD76A 42% 54%, transparent 54% 60%, #F7C84D 60% 72%, transparent 72% 78%, #FFD76A 78% 90%, transparent 90%);
+      border-radius: 4px 4px 0 0;
+      clip-path: polygon(0 20%, 12% 8%, 24% 18%, 38% 0, 52% 14%, 64% 4%, 78% 16%, 90% 6%, 100% 18%, 100% 100%, 0 100%);
+    }
+    .fries-art::after {
+      content: "";
+      position: absolute; left: 0; right: 0; bottom: 0; height: 58%;
+      background: var(--red);
+      border-radius: 6px 6px calc(14px * var(--s)) calc(14px * var(--s));
+      clip-path: polygon(0 0, 100% 0, 88% 100%, 12% 100%);
+      color: var(--yellow);
+      font: 700 calc(26px * var(--s)) / calc(56px * var(--s)) var(--display);
+      text-align: center;
+    }
+
+    .drink-art {
+      position: relative;
+      width: 58px; height: 96px;
+      filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.18));
+    }
+    .drink-art::before {
+      content: ""; position: absolute; left: 50%; top: -18px; width: 5px; height: 34px;
+      background: var(--red); transform: rotate(12deg); border-radius: 3px;
+    }
+    .drink-art::after {
+      content: ""; position: absolute; inset: 8px 0 0;
+      background: linear-gradient(var(--white) 0 12%, var(--red) 12% 30%, var(--white) 30%);
+      clip-path: polygon(0 0, 100% 0, 86% 100%, 14% 100%);
+      border-radius: 4px;
+    }
+
+    .sundae-art {
+      position: relative;
+      width: 84px; height: 92px;
+      filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.16));
+    }
+    .sundae-art::before {
+      content: ""; position: absolute; left: 6px; right: 6px; top: 0; height: 52px;
+      background:
+        radial-gradient(circle at 50% 70%, #7A3E1C 0 30%, transparent 31%),
+        radial-gradient(circle at 50% 100%, #FFFDF8 0 60%, transparent 61%);
+      border-radius: 50% 50% 10% 10%;
+    }
+    .sundae-art::after {
+      content: ""; position: absolute; left: 10px; right: 10px; bottom: 0; height: 46px;
+      background: linear-gradient(90deg, rgba(255,255,255,0.8), rgba(255,255,255,0.35));
+      border: 2px solid rgba(31, 26, 23, 0.12);
+      clip-path: polygon(0 0, 100% 0, 84% 100%, 16% 100%);
+      border-radius: 0 0 10px 10px;
+    }
+
+    .coffee-art {
+      position: relative;
+      width: 80px; height: 80px;
+      filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.16));
+    }
+    .coffee-art::before {
+      content: ""; position: absolute; left: 6px; top: 14px; width: 56px; height: 58px;
+      background: linear-gradient(#6B4A2E 0 18%, #FFFDF8 18%);
+      border-radius: 6px 6px 22px 22px;
+      box-shadow: inset 0 -12px 0 #F1E6D6;
+    }
+    .coffee-art::after {
+      content: ""; position: absolute; right: 2px; top: 26px; width: 22px; height: 26px;
+      border: 6px solid #FFFDF8; border-left: 0; border-radius: 0 16px 16px 0;
+    }
+
+    .box-art {
+      position: relative;
+      width: 96px; height: 84px;
+      filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.18));
+    }
+    .box-art::before {
+      content: ""; position: absolute; left: 50%; top: 0; width: 60px; height: 30px;
+      margin-left: -30px;
+      border: 7px solid var(--yellow); border-bottom: 0; border-radius: 30px 30px 0 0;
+    }
+    .box-art::after {
+      content: "☺"; position: absolute; left: 0; right: 0; bottom: 0; height: 58px;
+      background: var(--red); color: var(--yellow);
+      border-radius: 8px;
+      font-size: 34px; line-height: 58px; text-align: center;
+    }
+
+    .nuggets-art {
+      width: 100px; height: 70px; position: relative;
+      filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.18));
+    }
+    .nuggets-art i {
+      position: absolute; width: 42px; height: 32px;
+      background: radial-gradient(circle at 35% 35%, #F2C477, #C98A33);
+      border-radius: 48% 52% 44% 56% / 55% 45% 55% 45%;
+    }
+    .nuggets-art i:nth-child(1) { left: 0; top: 30px; }
+    .nuggets-art i:nth-child(2) { left: 30px; top: 16px; transform: rotate(20deg); }
+    .nuggets-art i:nth-child(3) { left: 56px; top: 34px; transform: rotate(-12deg); }
+    .nuggets-art i:nth-child(4) { left: 22px; top: 40px; transform: rotate(8deg); }
+
+    /* ---------- Secciones ---------- */
+    .section { padding: 80px 0; }
+    @media (min-width: 1024px) { .section { padding: 112px 0; } }
+    .section-head { max-width: 640px; margin-bottom: 40px; }
+    .section-head p { margin-top: 14px; font-size: 1.08rem; }
+
+    /* ---------- Menú ---------- */
+    .tabs {
+      display: flex; gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      margin-bottom: 28px;
+      scrollbar-width: none;
+    }
+    .tabs::-webkit-scrollbar { display: none; }
+    .tab {
+      flex-shrink: 0;
+      min-height: 44px; padding: 0 18px;
+      border-radius: 999px;
+      border: 1.5px solid var(--line);
+      background: var(--white);
+      font-weight: 600; font-size: 0.95rem;
+      transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .tab:hover { border-color: var(--ink); }
+    .tab[aria-selected="true"] { background: var(--ink); color: var(--white); border-color: var(--ink); }
+
+    .menu-grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
+    .product {
+      background: var(--white);
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      overflow: hidden;
+      display: flex; flex-direction: column;
+      transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+    }
+    .product:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(31, 26, 23, 0.12); }
+    .product[hidden] { display: none; }
+    .product-art {
+      height: 180px;
+      display: grid; place-items: center;
+      background: radial-gradient(circle at 50% 60%, #FFE9A8 0 38%, #FFF3D1 39%);
+    }
+    .product-art > * { transition: transform 0.4s var(--ease); }
+    .product:hover .product-art > * { transform: scale(1.08) rotate(-2deg); }
+    .product-body { padding: 20px 22px 24px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+    .product-tag {
+      align-self: flex-start;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--red);
+    }
+    .product p { font-size: 0.94rem; }
+    .product-foot { margin-top: auto; padding-top: 12px; display: flex; justify-content: space-between; align-items: center; gap: 8px; font-size: 0.85rem; color: var(--muted); }
+    .product-foot a { font-weight: 700; color: var(--red); }
+    .product-foot a:hover { text-decoration: underline; }
+
+    .menu-note { margin-top: 24px; font-size: 0.88rem; }
+
+    /* ---------- Formas de pedir ---------- */
+    .order { background: var(--yellow); }
+    .order .kicker { color: var(--ink); }
+    .order p { color: rgba(31, 26, 23, 0.78); }
+    .ways { display: grid; gap: 16px; }
+    @media (min-width: 640px) { .ways { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .ways { grid-template-columns: repeat(4, 1fr); } }
+    .way {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      display: flex; flex-direction: column; gap: 10px;
+      transition: transform 0.35s var(--ease);
+    }
+    .way:hover { transform: translateY(-4px) rotate(-0.5deg); }
+    .way-icon {
+      width: 56px; height: 56px; border-radius: 16px;
+      background: var(--red); color: var(--white);
+      display: grid; place-items: center; margin-bottom: 8px;
+    }
+    .way-icon svg { width: 28px; height: 28px; }
+    .way p { font-size: 0.95rem; color: var(--muted); }
+
+    /* ---------- Sin TACC + Puertas abiertas ---------- */
+    .split { display: grid; gap: 20px; }
+    @media (min-width: 900px) { .split { grid-template-columns: 1fr 1fr; } }
+    .panel {
+      border-radius: 28px;
+      padding: 40px 28px;
+      display: flex; flex-direction: column; gap: 14px;
+      position: relative; overflow: hidden;
+    }
+    @media (min-width: 1024px) { .panel { padding: 56px 48px; } }
+    .panel-dark { background: var(--ink); color: #F6F0E6; }
+    .panel-dark p { color: rgba(246, 240, 230, 0.78); }
+    .panel-dark .kicker { color: var(--yellow); }
+    .panel-light { background: var(--white); border: 1px solid var(--line); }
+    .panel h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); }
+    .panel ul { display: grid; gap: 10px; margin: 8px 0 12px; }
+    .panel li { display: flex; gap: 10px; align-items: flex-start; }
+    .panel li::before {
+      content: "✓"; flex-shrink: 0;
+      width: 22px; height: 22px; border-radius: 50%;
+      display: grid; place-items: center;
+      font-size: 0.75rem; font-weight: 700;
+      background: var(--yellow); color: var(--ink);
+      margin-top: 2px;
+    }
+    .panel .btn { align-self: flex-start; margin-top: auto; }
+    .panel-dark .btn-outline { color: var(--yellow); }
+
+    /* ---------- McDía Feliz ---------- */
+    .feliz {
+      background: var(--red); color: var(--white);
+      border-radius: 28px;
+      padding: 48px 28px;
+      display: grid; gap: 28px; align-items: center;
+      overflow: hidden; position: relative;
+    }
+    .feliz::before {
+      content: "";
+      position: absolute; right: -80px; top: -80px;
+      width: 260px; height: 260px; border-radius: 50%;
+      background: rgba(255, 199, 44, 0.25);
+    }
+    .feliz .kicker { color: var(--yellow); }
+    .feliz p { color: rgba(255, 255, 255, 0.88); max-width: 50ch; margin-top: 14px; }
+    .feliz-num {
+      font-family: var(--display); font-weight: 700;
+      font-size: clamp(3.5rem, 12vw, 7rem); line-height: 0.9; letter-spacing: -0.06em;
+      color: var(--yellow);
+    }
+    .feliz-num small { display: block; font-size: 1rem; letter-spacing: 0; font-family: var(--body); font-weight: 500; color: rgba(255, 255, 255, 0.85); margin-top: 10px; }
+    @media (min-width: 900px) { .feliz { grid-template-columns: 1.4fr 1fr; padding: 72px 56px; } }
+
+    /* ---------- Locales ---------- */
+    .locator {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 32px 24px;
+      display: grid; gap: 24px;
+    }
+    @media (min-width: 900px) { .locator { grid-template-columns: 1fr 1.1fr; padding: 48px; align-items: center; } }
+    .search { display: flex; flex-wrap: wrap; gap: 10px; }
+    .search label { width: 100%; font-weight: 600; font-size: 0.92rem; }
+    .search input {
+      flex: 1 1 220px; min-height: 52px; padding: 0 18px;
+      border-radius: 999px; border: 1.5px solid var(--line);
+      background: var(--cream); font: inherit; color: inherit;
+    }
+    .search input:focus { outline: none; border-color: var(--ink); box-shadow: 0 0 0 4px rgba(255, 199, 44, 0.5); }
+    .hours { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+    .hours li { font-size: 0.85rem; font-weight: 600; padding: 6px 12px; border-radius: 999px; background: var(--cream); }
+
+    /* ---------- Footer ---------- */
+    .footer { background: var(--ink); color: #E9E1D5; padding: 56px 0 32px; }
+    .footer-grid { display: grid; gap: 32px; padding-bottom: 32px; border-bottom: 1px solid rgba(255, 255, 255, 0.12); }
+    @media (min-width: 768px) { .footer-grid { grid-template-columns: 1.4fr 1fr 1fr; } }
+    .footer .brand { color: var(--white); }
+    .footer p { color: rgba(233, 225, 213, 0.72); font-size: 0.92rem; margin-top: 12px; }
+    .footer h3 { font-family: var(--body); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(233, 225, 213, 0.6); margin-bottom: 14px; }
+    .footer ul { display: grid; gap: 8px; }
+    .footer ul a:hover { color: var(--yellow); }
+    .disclaimer { padding-top: 24px; font-size: 0.8rem; color: rgba(233, 225, 213, 0.6); display: grid; gap: 8px; }
+    .disclaimer a { color: var(--yellow); }
+
+    /* ---------- Crédito R1 flotante ---------- */
+    .r1-credit {
+      position: fixed; right: 16px; bottom: 16px; z-index: 40;
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 8px 14px 8px 8px;
+      border-radius: 999px;
+      background: #0E0E0E; color: #F5F3EE;
+      font-size: 0.82rem; font-weight: 600;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      transition: transform 0.25s var(--ease);
+    }
+    .r1-credit:hover { transform: translateY(-2px); }
+    .r1-credit b {
+      width: 30px; height: 30px; border-radius: 9px;
+      display: grid; place-items: center;
+      background: #C6F432; color: #0E0E0E;
+      font-family: var(--display); font-size: 0.8rem;
+    }
+
+    /* ---------- Animaciones ---------- */
+    .js .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.8s var(--ease), transform 0.8s var(--ease); transition-delay: var(--d, 0s); }
+    .js .reveal.visible { opacity: 1; transform: none; }
+    .bob { animation: bob 5s ease-in-out infinite; }
+    @keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition-duration: 0.001ms !important; }
+      .js .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+
+<body>
+  <p class="notice">Concepto de diseño creado por R1 como muestra. <strong>Sitio no oficial</strong>, sin relación con McDonald's ni Arcos Dorados. Para pedir, visita <a href="https://www.mcdonalds.com.ar/" target="_blank" rel="noopener">mcdonalds.com.ar</a>.</p>
+
+  <header class="header">
+    <nav class="nav container" aria-label="Principal">
+      <a href="#inicio" class="brand">McDonald's <small>Concepto</small></a>
+      <ul class="nav-links">
+        <li><a href="#menu">Menú</a></li>
+        <li><a href="#pedir">Cómo pedir</a></li>
+        <li><a href="#sin-tacc">Sin TACC</a></li>
+        <li><a href="#locales">Locales</a></li>
+      </ul>
+      <a href="#pedir" class="btn btn-yellow btn-sm">Pide ahora</a>
+      <button class="burger" id="burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#menu">Menú</a>
+    <a href="#pedir">Cómo pedir</a>
+    <a href="#sin-tacc">Sin TACC</a>
+    <a href="#locales">Locales</a>
+    <a href="#pedir" class="btn btn-yellow">Pide ahora</a>
+  </div>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" id="inicio" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div>
+          <span class="kicker">Más de 40 años en Argentina</span>
+          <h1 id="hero-title">Tus clásicos de siempre, <span>más cerca que nunca.</span></h1>
+          <p>Big Mac, Cuarto de Libra, papas y McFlurry. Pídelos en el local, por Automac, con McDelivery o desde la app.</p>
+          <div class="hero-actions">
+            <a href="#menu" class="btn btn-yellow">Ver el menú</a>
+            <a href="#locales" class="btn btn-outline">Encontrar un local</a>
+          </div>
+          <ul class="hero-chips">
+            <li>Automac</li>
+            <li>McDelivery</li>
+            <li>App</li>
+            <li>Opciones sin TACC</li>
+          </ul>
+        </div>
+
+        <div class="hero-art" role="img" aria-label="Ilustración de una hamburguesa y papas fritas">
+          <span class="sun" aria-hidden="true"></span>
+          <div class="tag" aria-hidden="true">El más pedido<span>Big Mac</span></div>
+          <div class="burger-art bob" aria-hidden="true">
+            <i class="b-top"></i><i class="b-lettuce"></i><i class="b-cheese"></i><i class="b-patty"></i>
+            <i class="b-mid"></i><i class="b-sauce"></i><i class="b-lettuce"></i><i class="b-patty"></i><i class="b-bottom"></i>
+          </div>
+          <div class="fries-art bob" style="animation-delay:-2s" aria-hidden="true"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Menú -->
+    <section class="section" id="menu" aria-labelledby="menu-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="kicker">Nuestro menú</span>
+          <h2 id="menu-title">¿Qué se te antoja hoy?</h2>
+          <p>Los favoritos de siempre, listos en minutos. Elige una categoría para ver las opciones.</p>
+        </div>
+
+        <div class="tabs" role="tablist" aria-label="Categorías del menú">
+          <button class="tab" role="tab" aria-selected="true" data-filter="todo">Todo</button>
+          <button class="tab" role="tab" aria-selected="false" data-filter="hamburguesas">Hamburguesas</button>
+          <button class="tab" role="tab" aria-selected="false" data-filter="pollo">Pollo</button>
+          <button class="tab" role="tab" aria-selected="false" data-filter="acompanamientos">Acompañamientos</button>
+          <button class="tab" role="tab" aria-selected="false" data-filter="postres">Postres</button>
+          <button class="tab" role="tab" aria-selected="false" data-filter="mccafe">McCafé</button>
+          <button class="tab" role="tab" aria-selected="false" data-filter="cajita">Cajita Feliz</button>
+        </div>
+
+        <div class="menu-grid" id="menuGrid">
+          <article class="product" data-cat="hamburguesas">
+            <div class="product-art" aria-hidden="true">
+              <div class="burger-art">
+                <i class="b-top"></i><i class="b-lettuce"></i><i class="b-cheese"></i><i class="b-patty"></i>
+                <i class="b-mid"></i><i class="b-sauce"></i><i class="b-lettuce"></i><i class="b-patty"></i><i class="b-bottom"></i>
+              </div>
+            </div>
+            <div class="product-body">
+              <span class="product-tag">Hamburguesas</span>
+              <h3>Big Mac</h3>
+              <p>Dos medallones de carne, salsa Big Mac, lechuga, queso cheddar, pepinos y cebolla en pan con sésamo.</p>
+              <div class="product-foot"><span>Solo o en combo</span><a href="#pedir">Pedir</a></div>
+            </div>
+          </article>
+
+          <article class="product" data-cat="hamburguesas">
+            <div class="product-art" aria-hidden="true">
+              <div class="burger-art">
+                <i class="b-top"></i><i class="b-cheese"></i><i class="b-patty"></i><i class="b-cheese"></i><i class="b-bottom"></i>
+              </div>
+            </div>
+            <div class="product-body">
+              <span class="product-tag">Hamburguesas</span>
+              <h3>Cuarto de Libra</h3>
+              <p>Un medallón grande de carne, doble queso cheddar, cebolla, pepinos, kétchup y mostaza.</p>
+              <div class="product-foot"><span>Solo o en combo</span><a href="#pedir">Pedir</a></div>
+            </div>
+          </article>
+
+          <article class="product" data-cat="hamburguesas">
+            <div class="product-art" aria-hidden="true">
+              <div class="burger-art">
+                <i class="b-top"></i><i class="b-lettuce"></i><i class="b-tomato"></i><i class="b-cheese"></i><i class="b-patty"></i><i class="b-bottom"></i>
+              </div>
+            </div>
+            <div class="product-body">
+              <span class="product-tag">Hamburguesas</span>
+              <h3>McNífica</h3>
+              <p>Medallón de carne, queso, tomate, lechuga, cebolla y pepinos, con mayonesa, kétchup y mostaza.</p>
+              <div class="product-foot"><span>Solo o en combo</span><a href="#pedir">Pedir</a></div>
+            </div>
+          </article>
+
+          <article class="product" data-cat="hamburguesas">
+            <div class="product-art" aria-hidden="true">
+              <div class="burger-art">
+                <i class="b-top"></i><i class="b-cheese"></i><i class="b-patty"></i><i class="b-cheese"></i><i class="b-patty"></i><i class="b-cheese"></i><i class="b-patty"></i><i class="b-bottom"></i>
+              </div>
+            </div>
+            <div class="product-body">
+              <span class="product-tag">Hamburguesas</span>
+              <h3>Triple Hamburguesa con Queso</h3>
+              <p>Tres medallones de carne y queso cheddar, con cebolla, pepinos, kétchup y mostaza.</p>
+              <div class="product-foot"><span>Solo o en combo</span><a href="#pedir">Pedir</a></div>
+            </div>
+          </article>
+
+          <article class="product" data-cat="pollo">
+            <div class="product-art" aria-hidden="true">
+              <div class="burger-art">
+                <i class="b-top"></i><i class="b-lettuce"></i><i class="b-chicken"></i><i class="b-bottom"></i>
+              </div>
+            </div>
+            <div class="product-body">
+              <span class="product-tag">Pollo</span>
+              <h3>McPollo</h3>
+              <p>Pollo empanizado y crocante, con lechuga fresca y mayonesa en pan tostado.</p>
+              <div class="product-foot"><span>Solo o en combo</span><a href="#pedir">Pedir</a></div>
+            </div>
+          </article>
+
+          <article class="product" data-cat="pollo">
+            <div class="product-art" aria-hidden="true"><div class="nuggets-art"><i></i><i></i><i></i><i></i></div></div>
+            <div class="product-body">
+              <span class="product-tag">Pollo</span>
+              <h3>Chicken McNuggets</h3>
+              <p>Bocados de pollo crujientes por fuera y tiernos por dentro, para acompañar con tu salsa favorita.</p>
+              <div class="product-foot"><span>Varias porciones</span><a href="#pedir">Pedir</a></div>
+            </div>
+          </article>
+
+          <article class="product" data-cat="acompanamientos">
+            <div class="product-art" aria-hidden="true"><div class="fries-art" style="--s:1.2"></div></div>
+            <div class="product-body">
+              <span class="product-tag">Acompañamientos</span>
+              <h3>Papas Fritas</h3>
+              <p>Doradas, crocantes y con el punto justo de sal. Pequeñas, medianas o grandes.</p>
+              <div class="product-foot"><span>3 tamaños</span><a href="#pedir">Pedir</a></div>
+            </div>
+          </article>
+
+          <article class="product" data-cat="acompanamientos">
+            <div class="product-art" aria-hidden="true"><div class="drink-art"></div></div>
+            <div class="product-body">
+              <span class="product-tag">Bebidas</span>
+              <h3>Bebidas</h3>
+              <p>Gaseosas, aguas y jugos para completar tu combo, en vaso mediano o grande.</p>
+              <div class="product-foot"><span>Mediana o grande</span><a href="#pedir">Pedir</a></div>
+            </div>
+          </article>
+
+          <article class="product" data-cat="postres">
+            <div class="product-art" aria-hidden="true"><div class="sundae-art"></div></div>
+            <div class="product-body">
+              <span class="product-tag">Postres</span>
+              <h3>McFlurry</h3>
+              <p>Helado cremoso mezclado con tus toppings favoritos, como galletitas o chocolate.</p>
+              <div class="product-foot"><span>Varios sabores</span><a href="#pedir">Pedir</a></div>
+            </div>
+          </article>
+
+          <article class="product" data-cat="postres">
+            <div class="product-art" aria-hidden="true"><div class="sundae-art"></div></div>
+            <div class="product-body">
+              <span class="product-tag">Postres</span>
+              <h3>Sundae y Cono</h3>
+              <p>El helado de siempre, solo o con salsa de chocolate, dulce de leche o frutilla.</p>
+              <div class="product-foot"><span>Varios sabores</span><a href="#pedir">Pedir</a></div>
+            </div>
+          </article>
+
+          <article class="product" data-cat="mccafe">
+            <div class="product-art" aria-hidden="true"><div class="coffee-art"></div></div>
+            <div class="product-body">
+              <span class="product-tag">McCafé</span>
+              <h3>Café y medialunas</h3>
+              <p>Café recién hecho, capuccino o café con leche, para acompañar con medialunas o algo dulce.</p>
+              <div class="product-foot"><span>Desayuno y merienda</span><a href="#pedir">Pedir</a></div>
+            </div>
+          </article>
+
+          <article class="product" data-cat="cajita">
+            <div class="product-art" aria-hidden="true"><div class="box-art"></div></div>
+            <div class="product-body">
+              <span class="product-tag">Cajita Feliz</span>
+              <h3>Cajita Feliz</h3>
+              <p>Una comida pensada para los más chicos, con hamburguesa o nuggets, acompañamiento, bebida y juguete sorpresa.</p>
+              <div class="product-foot"><span>Juguete incluido</span><a href="#pedir">Pedir</a></div>
+            </div>
+          </article>
+        </div>
+
+        <p class="menu-note">Los productos, precios y promociones varían según el local y la temporada. Consulta la app oficial o <a href="https://www.mcdonalds.com.ar/" target="_blank" rel="noopener" style="text-decoration:underline">mcdonalds.com.ar</a>.</p>
+      </div>
+    </section>
+
+    <!-- Formas de pedir -->
+    <section class="section order" id="pedir" aria-labelledby="order-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="kicker">Cómo pedir</span>
+          <h2 id="order-title">Como te quede más cómodo.</h2>
+          <p>En el local, desde el auto, en tu casa o con el celular. Elige la forma que prefieras.</p>
+        </div>
+        <div class="ways">
+          <article class="way reveal">
+            <div class="way-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14v-4l-2-5H7l-2 5z"/><path d="M5 13h14"/><circle cx="8" cy="17" r="1.6"/><circle cx="16" cy="17" r="1.6"/></g></svg></div>
+            <h3>Automac</h3>
+            <p>Pide y retira sin bajarte del auto. Rápido y práctico cuando estás en camino.</p>
+          </article>
+          <article class="way reveal" style="--d:.08s">
+            <div class="way-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="17" r="2.5"/><circle cx="18" cy="17" r="2.5"/><path d="M8.5 17h7M6 14.5l3-6h4l2.5 8.5M13 8.5h3"/></g></svg></div>
+            <h3>McDelivery</h3>
+            <p>Recibe tu pedido en casa o en la oficina, calentito y a tiempo.</p>
+          </article>
+          <article class="way reveal" style="--d:.16s">
+            <div class="way-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></g></svg></div>
+            <h3>App</h3>
+            <p>Arma tu pedido desde el celular, aprovecha promociones y retira sin hacer fila.</p>
+          </article>
+          <article class="way reveal" style="--d:.24s">
+            <div class="way-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2.5" width="14" height="14" rx="2"/><path d="M9 21.5h6M12 16.5v5M9 7h6M9 10.5h4"/></g></svg></div>
+            <h3>En el local</h3>
+            <p>En el mostrador o en las pantallas de autoservicio, eligiendo cada detalle de tu pedido.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sin TACC + Puertas abiertas -->
+    <section class="section" id="sin-tacc" aria-label="Opciones sin TACC y Puertas Abiertas">
+      <div class="container split">
+        <article class="panel panel-dark reveal">
+          <span class="kicker">Para todos</span>
+          <h2>Opciones sin TACC.</h2>
+          <p>Hay alternativas sin gluten para que más personas puedan disfrutar de sus hamburguesas favoritas.</p>
+          <ul>
+            <li>Pregunta en el mostrador o en la app</li>
+            <li>Consulta disponibilidad en tu local</li>
+          </ul>
+          <a class="btn btn-outline" href="https://www.mcdonalds.com.ar/" target="_blank" rel="noopener">Más información</a>
+        </article>
+        <article class="panel panel-light reveal" style="--d:.1s">
+          <span class="kicker">Puertas Abiertas</span>
+          <h2>Conoce nuestra cocina.</h2>
+          <p>Con el programa Puertas Abiertas puedes recorrer la cocina de un local y ver cómo se prepara el menú.</p>
+          <ul>
+            <li>Recorrido guiado por el local</li>
+            <li>Ideal para ir en familia</li>
+          </ul>
+          <a class="btn btn-red" href="https://www.mcdonalds.com.ar/quienes-somos" target="_blank" rel="noopener">Quiero saber más</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- McDía Feliz -->
+    <section class="section" style="padding-top:0" aria-labelledby="feliz-title">
+      <div class="container">
+        <div class="feliz reveal">
+          <div>
+            <span class="kicker">McDía Feliz</span>
+            <h2 id="feliz-title">Un Big Mac que ayuda.</h2>
+            <p>Una vez al año, en el McDía Feliz, lo recaudado por la venta de Big Mac se destina a causas solidarias vinculadas a la salud y la educación de niños y niñas.</p>
+          </div>
+          <div class="feliz-num">1 día<small>para ayudar comiendo tu hamburguesa favorita</small></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Locales -->
+    <section class="section" id="locales" style="padding-top:0" aria-labelledby="loc-title">
+      <div class="container">
+        <div class="locator reveal">
+          <div>
+            <span class="kicker">Locales</span>
+            <h2 id="loc-title">Encuentra el más cercano.</h2>
+            <p style="margin-top:14px">Hay locales en todo el país, muchos con Automac y algunos abiertos las 24 horas.</p>
+            <ul class="hours">
+              <li>Automac</li>
+              <li>McDelivery</li>
+              <li>Abiertos 24 h</li>
+              <li>McCafé</li>
+            </ul>
+          </div>
+          <form class="search" id="searchForm" role="search">
+            <label for="city">¿Dónde estás?</label>
+            <input id="city" name="city" type="search" placeholder="Ciudad, barrio o dirección" autocomplete="address-level2">
+            <button class="btn btn-red" type="submit">Buscar</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <span class="brand">McDonald's <small>Concepto</small></span>
+          <p>Rediseño conceptual hecho como ejercicio de portfolio. La información se basa en datos públicos y puede no estar actualizada.</p>
+        </div>
+        <div>
+          <h3>Secciones</h3>
+          <ul>
+            <li><a href="#menu">Menú</a></li>
+            <li><a href="#pedir">Cómo pedir</a></li>
+            <li><a href="#sin-tacc">Sin TACC</a></li>
+            <li><a href="#locales">Locales</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Sitio oficial</h3>
+          <ul>
+            <li><a href="https://www.mcdonalds.com.ar/" target="_blank" rel="noopener">mcdonalds.com.ar</a></li>
+            <li><a href="https://www.mcdonalds.com.ar/menu/hamburguesas" target="_blank" rel="noopener">Menú oficial</a></li>
+            <li><a href="https://www.arcosdorados.com/" target="_blank" rel="noopener">Arcos Dorados</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="disclaimer">
+        <p>McDonald's, Big Mac, Cuarto de Libra, McFlurry, Cajita Feliz, McCafé y las demás marcas mencionadas pertenecen a sus respectivos titulares. En Argentina, McDonald's es operado por Arcos Dorados.</p>
+        <p>Este sitio es un concepto de diseño no oficial creado por <a href="../index.html">R1</a>. No vende productos ni toma pedidos.</p>
+      </div>
+    </div>
+  </footer>
+
+  <a class="r1-credit" href="../index.html"><b>R1</b>Diseño de muestra por R1</a>
+
+  <script>
+    document.documentElement.classList.add("js");
+
+    // Menú móvil
+    const burger = document.getElementById("burger");
+    const mobileMenu = document.getElementById("mobileMenu");
+    function setMenu(open) {
+      burger.setAttribute("aria-expanded", String(open));
+      burger.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
+      mobileMenu.classList.toggle("open", open);
+      document.body.classList.toggle("menu-open", open);
+    }
+    burger.addEventListener("click", () => setMenu(burger.getAttribute("aria-expanded") !== "true"));
+    mobileMenu.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => setMenu(false)));
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") setMenu(false); });
+
+    // Filtro del menú
+    const tabs = document.querySelectorAll(".tab");
+    const products = document.querySelectorAll(".product");
+    tabs.forEach((tab) => tab.addEventListener("click", () => {
+      tabs.forEach((t) => t.setAttribute("aria-selected", String(t === tab)));
+      const filter = tab.dataset.filter;
+      products.forEach((p) => { p.hidden = filter !== "todo" && p.dataset.cat !== filter; });
+    }));
+
+    // Buscador de locales: abre Google Maps
+    document.getElementById("searchForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const place = document.getElementById("city").value.trim();
+      const q = "McDonald's " + (place || "cerca de mí");
+      window.open("https://www.google.com/maps/search/" + encodeURIComponent(q), "_blank", "noopener");
+    });
+
+    // Aparición al hacer scroll
+    const items = document.querySelectorAll(".reveal");
+    if ("IntersectionObserver" in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) { entry.target.classList.add("visible"); io.unobserve(entry.target); }
+        });
+      }, { threshold: 0.12 });
+      items.forEach((el) => io.observe(el));
+    } else {
+      items.forEach((el) => el.classList.add("visible"));
+    }
+  </script>
+</body>
+</html>
