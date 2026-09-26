@@ -1,8 +1,13 @@
 # Fotos de la web de Kansas Parque Leloir
 
-Las imágenes actuales de `assets/img/` son fondos de humo y brasas generados
-como provisorios. Para poner fotos reales, reemplaza cada archivo por una foto
-con **el mismo nombre** (formato `.webp`; si tienes JPG o PNG, Claude las convierte).
+La web muestra fotos ilustrativas de Unsplash (licencia gratuita, con crédito a
+cada fotógrafo en el pie de página). Se cargan desde los servidores de Unsplash.
+Los archivos de `assets/img/` son fondos de respaldo: se muestran solo si Unsplash
+no carga.
+
+Cuando haya fotos reales del local, reemplaza cada archivo por una foto con
+**el mismo nombre** (formato `.webp`; si tienes JPG o PNG, Claude las convierte)
+y cambia en `index.html` la URL de Unsplash por la ruta local.
 
 | Archivo               | Qué foto va                          | Formato      |
 |-----------------------|--------------------------------------|--------------|

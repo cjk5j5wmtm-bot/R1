@@ -119,6 +119,7 @@
       current = i;
       items.forEach(function (it, j) { it.classList.toggle("is-active", j === i); });
       var src = items[i].getAttribute("data-img");
+      img.setAttribute("data-fallback", items[i].getAttribute("data-fallback") || "");
       var name = items[i].querySelector("h3").textContent;
       var num = items[i].querySelector(".sig-num").textContent;
       img.classList.add("is-swapping");
@@ -221,8 +222,20 @@
     });
   }
 
+  function initImageFallback() {
+    var useFallback = function (img) {
+      var fb = img.getAttribute("data-fallback");
+      if (fb && img.getAttribute("src") !== fb) img.setAttribute("src", fb);
+    };
+    document.querySelectorAll("img[data-fallback]").forEach(function (img) {
+      img.addEventListener("error", function () { useFallback(img); });
+      if (img.complete && img.naturalWidth === 0 && img.getAttribute("src")) useFallback(img);
+    });
+  }
+
   function boot() {
     document.documentElement.classList.add("js-ready");
+    safe(initImageFallback, "initImageFallback");
     safe(initSplash, "initSplash");
     safe(initNav, "initNav");
     safe(initHeroTitle, "initHeroTitle");
